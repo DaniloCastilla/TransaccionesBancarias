@@ -26,7 +26,7 @@ public class Cajero implements Serializable{
         this.remitente = "";
     }
 
-    public Cajero(int numero_cuenta, String titular, short clave, int saldo, String remitente) {
+    public Cajero(int numero_cuenta, String titular, short clave, int saldo) {
         this.numero_cuenta = numero_cuenta;
         this.titular = titular;
         this.clave = clave;
