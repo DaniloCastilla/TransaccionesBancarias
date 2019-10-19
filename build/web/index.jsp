@@ -12,6 +12,6 @@
         <title>Transacciones Bancarias</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <jsp:forward page="banco.jsp"></jsp:forward>
     </body>
 </html>

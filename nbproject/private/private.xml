@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Laura%20Santacruz/Desktop/Transaccionales2/TransaccionesBancarias/web/index.jsp</file>
-            <file>file:/C:/Users/Laura%20Santacruz/Desktop/Transaccionales2/TransaccionesBancarias/src/java/modelo/Cajero.java</file>
-            <file>file:/C:/Users/Laura%20Santacruz/Desktop/Transaccionales2/TransaccionesBancarias/src/java/dao/CajeroDAO.java</file>
+            <file>file:/C:/Users/DaniloCastilla/Documents/NetBeansProjects/Transacciones%20Bancarias/src/java/controlador/usuarioControl.java</file>
+            <file>file:/C:/Users/DaniloCastilla/Documents/NetBeansProjects/Transacciones%20Bancarias/src/java/dao/CajeroDAO.java</file>
+            <file>file:/C:/Users/DaniloCastilla/Documents/NetBeansProjects/Transacciones%20Bancarias/web/resgistroUsuarios.jsp</file>
+            <file>file:/C:/Users/DaniloCastilla/Documents/NetBeansProjects/Transacciones%20Bancarias/src/java/controlador/listarUsuarioControl.java</file>
+            <file>file:/C:/Users/DaniloCastilla/Documents/NetBeansProjects/Transacciones%20Bancarias/web/banco.jsp</file>
+            <file>file:/C:/Users/DaniloCastilla/Documents/NetBeansProjects/Transacciones%20Bancarias/web/index.jsp</file>
         </group>
     </open-files>
 </project-private>
