@@ -5,12 +5,17 @@
  */
 package controlador;
 
+import dao.CajeroDAO;
+import dao.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Cajero;
 
 /**
  *
@@ -39,6 +44,33 @@ public class listarUsuarioControl extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet listarUsuarioControl at " + request.getContextPath() + "</h1>");
+            try{
+                CajeroDAO Cajero = new CajeroDAO();
+                for(Cajero usuario:Cajero.listarUsuario()){
+                    out.println("<table id='dynamic-table' class='table table-striped table-bordered table-hover'>");
+                    out.println("<thead>");
+                    out.println("<tr>");
+                    out.println("<th> Numero de la Cuenta "+usuario.getNumero_cuenta()+"</th>");
+                    out.println("<th> Titular"+usuario.getTitular()+"</th>");
+                    out.println("<th> Clave"+usuario.getClave()+"</th>");
+                    out.println("<th> Saldo"+usuario.getSaldo()+"</th>");
+                    out.println("</tr>");
+                    out.println("</thead>");
+                    out.println("<tbody>");
+                    out.println("<tr>");
+                    out.println("<td> ");
+                    out.println("</td>");
+                    out.println("<td class='hidden-480'></td>");
+                    out.println("<td></td>");
+                    out.println("<td></td>");
+                    out.println("</tr>");
+                    out.println("</tbody>");
+                    out.println("</table>");
+                    System.out.println(usuario.getTitular());
+                }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
             out.println("</body>");
             out.println("</html>");
         }

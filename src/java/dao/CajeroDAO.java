@@ -7,6 +7,7 @@ package dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -44,17 +45,18 @@ public class CajeroDAO {
     }
     
     public static ArrayList<Cajero> listarUsuario(){
-        Connection con = Conexion.conectar();
+        ArrayList<Cajero> listarUsuario = null;
         try {
-            
-            CallableStatement cStmt = con.prepareCall("call listarUsuarios()");
+            Connection con = Conexion.conectar();
+            PreparedStatement st = con.prepareStatement("SELECT * FROM cajeros");
+            CallableStatement cStmt = con.prepareCall("SELECT * FROM cajeros");
             
             //cStmt.setInt(1, caj.getNumero_cuenta());
             //cStmt.setString(2, caj.getTitular());
             //cStmt.setInt(3, caj.getClave());
             //cStmt.setInt(4, caj.getSaldo());
             
-            ResultSet resultado = cStmt.executeQuery();
+            ResultSet resultado = st.executeQuery();
             
             ArrayList<Cajero> listaUsuarios = null;
             Cajero caj;

@@ -5,7 +5,7 @@
  */
 package dao;
 
-import com.mysql.jdbc.Driver;
+//import com.mysql.jdbc.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -29,5 +29,7 @@ public class Conexion {
             //Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+        
+        
     }
 }
