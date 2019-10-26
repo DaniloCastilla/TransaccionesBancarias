@@ -142,50 +142,7 @@
 
                                         <!-- div.dataTables_borderWrap -->
                                         <div>
-                                            <!--<%/*
-                                                response.setContentType("text/html;charset=UTF-8");
-                                                try (PrintWriter out1 = response.getWriter()) {
-                                                    
-                                                    
-                                                    try{
-                                                        CajeroDAO Cajero = new CajeroDAO();
-                                                        for(Cajero usuario:Cajero.listarUsuario()){
-                                                            out1.println("<!DOCTYPE html>");
-                                                            out1.println("<html>");
-                                                            out1.println("<head>");
-                                                            out1.println("<title> </title>");            
-                                                            out1.println("</head>");
-                                                            out1.println("<body>");
-                                                            out1.println("<h1></h1>");
-                                                            out1.println("<table id='dynamic-table' class='table table-striped table-bordered table-hover'>");
-                                                            out1.println("<thead>");
-                                                            out1.println("<tr>");
-                                                            out1.println("<th> Numero de la Cuenta "+usuario.getNumero_cuenta()+"</th>");
-                                                            out1.println("<th> Titular"+usuario.getTitular()+"</th>");
-                                                            out1.println("<th> Clave"+usuario.getClave()+"</th>");
-                                                            out1.println("<th> Saldo"+usuario.getSaldo()+"</th>");
-                                                            out1.println("</tr>");
-                                                            out1.println("</thead>");
-                                                            out1.println("<tbody>");
-                                                            out1.println("<tr>");
-                                                            out1.println("<td> ");
-                                                            out1.println("</td>");
-                                                            out1.println("<td class='hidden-480'></td>");
-                                                            out1.println("<td></td>");
-                                                            out1.println("<td></td>");
-                                                            out1.println("</tr>");
-                                                            out1.println("</tbody>");
-                                                            out1.println("</table>");
-                                                            out1.println("</body>");
-                                                            out1.println("</html>");
-                                                            System.out.println(usuario.getTitular());
-                                                        }
-                                                    }catch(Exception e){
-                                                        System.out.println(e.getMessage());
-                                                    }
-                                                   
-                                                }/*
-                                            %>-->
+                                            
                                             <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                                                 <thead>
                                                     <tr>
