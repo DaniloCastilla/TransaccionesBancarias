@@ -43,6 +43,30 @@ public class CajeroDAO {
         }
     }
     
+    public static boolean transaccion(Cajero caj){
+        
+        Connection con = Conexion.conectar();
+        
+        try {
+            CallableStatement cStmt = con.prepareCall("call transaccion(?,?,?,?)");
+            
+            cStmt.setInt(1, caj.getNumero_cuenta());
+            cStmt.setInt(2, caj.getClave());
+            cStmt.setInt(3, caj.getDestinatario());
+            cStmt.setInt(4, caj.getSaldo());
+            
+            if (cStmt.executeUpdate()>0) {
+                return true;
+            }else{
+                return false;
+            }
+            
+        } catch (SQLException ex) {
+            //Logger.getLogger(CajeroDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
     public static ArrayList<Cajero> listarUsuario(){
         Connection con = Conexion.conectar();
         try {

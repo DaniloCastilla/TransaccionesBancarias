@@ -16,22 +16,22 @@ public class Cajero implements Serializable{
     private String titular;
     private short clave;
     private int saldo;
-    private String remitente;
+    private int destinatario;
     
     public Cajero(){
         this.numero_cuenta = 0;
         this.titular = "";
         this.clave = 0;
         this.saldo = 0;
-        this.remitente = "";
+        this.destinatario = 0;
     }
 
-    public Cajero(int numero_cuenta, String titular, short clave, int saldo) {
+    public Cajero(int numero_cuenta, String titular, short clave, int saldo, int destinatario) {
         this.numero_cuenta = numero_cuenta;
         this.titular = titular;
         this.clave = clave;
         this.saldo = saldo;
-        this.remitente = remitente;
+        this.destinatario = destinatario;
     }
 
     public int getNumero_cuenta() {
@@ -50,8 +50,8 @@ public class Cajero implements Serializable{
         return saldo;
     }
 
-    public String getRemitente() {
-        return remitente;
+    public int getDestinatario() {
+        return destinatario;
     }
 
     public void setNumero_cuenta(int numero_cuenta) {
@@ -70,7 +70,7 @@ public class Cajero implements Serializable{
         this.saldo = saldo;
     }
 
-    public void setRemitente(String remitente) {
-        this.remitente = remitente;
+    public void setDestinatario(int destinatario) {
+        this.destinatario = destinatario;
     }
 }

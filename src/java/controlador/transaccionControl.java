@@ -9,6 +9,7 @@ import dao.CajeroDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +19,9 @@ import modelo.Cajero;
  *
  * @author DaniloCastilla
  */
-public class usuarioControl extends HttpServlet {
+@WebServlet(name = "transaccionControl", urlPatterns = {"/transaccionControl"})
+
+public class transaccionControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +40,10 @@ public class usuarioControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet usuarioControl</title>");            
+            out.println("<title>Servlet transaccionControl</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet usuarioControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet transaccionControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -72,28 +75,26 @@ public class usuarioControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String numeroCuenta = request.getParameter("numero_cuenta");
-        String nombreTitular = request.getParameter("nombre_titular");
-        String numeroClave = request.getParameter("numero_clave");
+        
+        String numeroCuentaOrigen = request.getParameter("cuentaO");
+        String numeroClave = request.getParameter("numero_clave");    
+        String numeroCuentaDestino = request.getParameter("cuentaD");
         String numeroSaldo = request.getParameter("numero_saldo");
         
         Cajero caj = new Cajero();
         
-        caj.setNumero_cuenta(Integer.parseInt(numeroCuenta));
-        caj.setTitular(nombreTitular);
+        caj.setNumero_cuenta(Integer.parseInt(numeroCuentaOrigen));
         caj.setClave(Short.valueOf(numeroClave));
+        caj.setDestinatario(Integer.parseInt(numeroCuentaDestino));
         caj.setSaldo(Integer.parseInt(numeroSaldo));
         
-        if (CajeroDAO.registrarUsuario(caj)) {
-            request.setAttribute("mensaje", "El usuario se registro con exito");
+        if (CajeroDAO.transaccion(caj)) {
+            request.setAttribute("mensaje", "La transaccion ha sido exitosa");
         }else{
-            request.setAttribute("mensaje", "El usuario NO se registro");
+            request.setAttribute("mensaje", "No se pudo realizar la transaccion");
         }
         
-        request.getRequestDispatcher("resgistroUsuarios.jsp").forward(request, response);
-        
-        
+        request.getRequestDispatcher("transacciones.jsp").forward(request, response);
         
     }
 
