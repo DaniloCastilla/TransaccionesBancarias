@@ -3,6 +3,10 @@
     Author     : Danilo Castilla
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="dao.Conexion"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.CajeroDAO"%>
 <%@page import="modelo.Cajero"%>
@@ -12,7 +16,7 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
-        <title>Gestión de libros</title>
+        <title>Transacciones Bancarias</title>
 
         <meta name="description" content="Christian Gámez Udemy" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -119,30 +123,40 @@
                                 Sistemas Transaccionales  
                             </h1>
                         </div><!-- /.page-header -->
-
+                            
                         <div class="row">
-                            <div class="col-xs-12">
-                                <!-- PAGE CONTENT BEGINS -->
-                                <!-- /.row -->
-
-                                <div class="row">
                                     <div class="col-xs-12">
                                         <div class="table-header">
                                             Usuarios Registrados
                                         </div>
-
                                         <!-- div.table-responsive -->
-
                                         <!-- div.dataTables_borderWrap -->
+                                        <%
+                                           Connection con = Conexion.conectar();
+                                           PreparedStatement ps;
+                                           ResultSet rs;
+                                           
+                                           ps=con.prepareStatement("SELECT * FROM cajeros");
+                                           rs=ps.executeQuery();
+                                           
+                                        %>
                                         <div>
                                             <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                                                 <thead>
-                                                    
                                                     <tr>
                                                         <th> Numero de la Cuenta </th>
                                                         <th> Titular </th>
                                                         <th> Clave </th>
                                                         <th> Saldo </th>
+                                                    </tr>
+                                                    <%
+                                                        while(rs.next()){
+                                                    %>
+                                                    <tr>
+                                                        <td><%= rs.getInt("numero_cuenta")%></td> <!--numero_cuenta-->
+                                                        <td><%= rs.getString("titular")%></td><!--titular-->
+                                                        <td><%= rs.getShort("clave")%></td><!--clave-->
+                                                        <td><%= rs.getInt("saldo")%></td><!--saldo-->
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -154,6 +168,20 @@
                                                         <td></td>
                                                     </tr>
                                                 </tbody>
+                                                <%}%>
+                        
+                        
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <!-- PAGE CONTENT BEGINS -->
+                                <!-- /.row -->
+
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <!-- div.table-responsive -->
+
+                                        <!-- div.dataTables_borderWrap -->
+                                            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                                             </table>
                                         </div>
                                     </div><!-- /.modal-content -->
