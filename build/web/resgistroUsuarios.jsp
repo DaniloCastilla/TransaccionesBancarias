@@ -77,14 +77,7 @@
                         <b class="arrow"></b>
 
                         <ul class="submenu">
-                            <li class="active">
-                                <a href="index.jsp">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Ver usuarios
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
+                            
                             <li class="">
                                 <a href="resgistroUsuarios.jsp">
                                     <i class="menu-icon fa fa-caret-right"></i>

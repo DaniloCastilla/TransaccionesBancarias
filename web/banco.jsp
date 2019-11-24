@@ -105,6 +105,30 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="">
+                                <a href="transacciones.jsp">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Transacciones
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="">
+                                <a href="consignaciones.jsp">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Consignaciones
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="">
+                                <a href="retiros.jsp">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Retiros
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
                         </ul>
                     </li>
 
