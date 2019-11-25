@@ -221,7 +221,7 @@
                                                         Saldo:
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" minlength="5" maxlength="8" name="numero_saldo" id="numero_saldo" value="" placeholder="Saldo">
+                                                        <input type="text" minlength="4" maxlength="7" name="numero_saldo" id="numero_saldo" value="" placeholder="Saldo">
                                                        
                                                     </div>
                                                 </div>

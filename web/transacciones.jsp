@@ -223,30 +223,7 @@
                                                     </label>
                                                     <div class="col-sm-9">
                                                         <input type="text" name="numero_saldo" id="numero_saldo" value="" placeholder="Saldo a Consignar">
-                                                        <script>
-var separador_cedula = document.getElementById('numero_saldo');
-separador_cedula.addEventListener('keyup', (e) => {
-    var entrada_cedula = e.target.value.split('.').join('');
-    entrada_cedula = entrada_cedula.split('').reverse();
-
-    var salida_cedula = [];
-    var aux_cedula = '';
-
-    var paginador_cedula = Math.ceil(entrada_cedula.length / 3);
-
-    for (let i = 0; i < paginador_cedula; i++) 
-    {
-        for (let j = 0; j < 3; j++) 
-            if (entrada_cedula[j + (i * 3)] != undefined) 
-                aux_cedula += entrada_cedula[j + (i * 3)];
-
-        salida_cedula.push(aux_cedula);
-        aux_cedula = '';
-
-        e.target.value = salida_cedula.join('.').split("").reverse().join('');
-    }
-}, false);
-                                                        </script>
+                                                        
                                                     </div>
                                                 </div>
                                                 <button class="btn-success" type="submit">
