@@ -3,6 +3,7 @@
     Created on : 24/11/2019, 01:39:26 AM
     Author     : DaniloCastilla
 --%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -196,7 +197,8 @@
                                                         Numero de Cuenta de Origen:
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="cuentaO" value="" placeholder="Cuenta de origen">
+                                                        <input type="number" name="cuentaO" id="cuentaO" value="" placeholder="cuenta de origen" >
+                                                        
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -204,7 +206,7 @@
                                                         Clave:
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="numero_clave" value="" placeholder="Clave">
+                                                        <input type="text" minlength="4" maxlength="4" name="numero_clave" value="" placeholder="Clave">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -212,7 +214,7 @@
                                                         Numero de Cuenta de Destino:
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="cuentaD" value="" placeholder="Cuenta de Destino">
+                                                        <input type="number" name="cuentaD" value="" placeholder="Cuenta de Destino">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -220,7 +222,31 @@
                                                         Saldo a Consigar:
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="numero_saldo" value="" placeholder="Saldo a Consignar">
+                                                        <input type="text" name="numero_saldo" id="numero_saldo" value="" placeholder="Saldo a Consignar">
+                                                        <script>
+var separador_cedula = document.getElementById('numero_saldo');
+separador_cedula.addEventListener('keyup', (e) => {
+    var entrada_cedula = e.target.value.split('.').join('');
+    entrada_cedula = entrada_cedula.split('').reverse();
+
+    var salida_cedula = [];
+    var aux_cedula = '';
+
+    var paginador_cedula = Math.ceil(entrada_cedula.length / 3);
+
+    for (let i = 0; i < paginador_cedula; i++) 
+    {
+        for (let j = 0; j < 3; j++) 
+            if (entrada_cedula[j + (i * 3)] != undefined) 
+                aux_cedula += entrada_cedula[j + (i * 3)];
+
+        salida_cedula.push(aux_cedula);
+        aux_cedula = '';
+
+        e.target.value = salida_cedula.join('.').split("").reverse().join('');
+    }
+}, false);
+                                                        </script>
                                                     </div>
                                                 </div>
                                                 <button class="btn-success" type="submit">

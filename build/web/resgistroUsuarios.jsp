@@ -197,7 +197,7 @@
                                                         Numero de Cuenta:
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="numero_cuenta" value="" placeholder="N.C">
+                                                        <input type="text" minlength="5" maxlength="10" name="numero_cuenta" value="" placeholder="N.C">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -213,7 +213,7 @@
                                                         Clave:
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="numero_clave" value="" placeholder="clave">
+                                                        <input type="text" minlength="4" maxlength="4" name="numero_clave" value="" placeholder="clave">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -221,7 +221,8 @@
                                                         Saldo:
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="numero_saldo" value="" placeholder="Saldo">
+                                                        <input type="text" minlength="5" maxlength="8" name="numero_saldo" id="numero_saldo" value="" placeholder="Saldo">
+                                                       
                                                     </div>
                                                 </div>
                                                 <button class="btn-success" type="submit">
