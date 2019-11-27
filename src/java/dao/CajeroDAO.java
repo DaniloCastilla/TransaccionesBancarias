@@ -19,7 +19,7 @@ import modelo.Cajero;
  * @author DaniloCastilla
  */
 public class CajeroDAO {
-    
+    //HOLAAAAAAAAAAAAAAAAAAAAAAAAA
     public static boolean registrarUsuario(Cajero caj){
         Connection con = Conexion.conectar();
         try {
