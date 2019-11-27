@@ -78,7 +78,7 @@
 
                         <ul class="submenu">
                             
-                            <li class="">
+                            <li class="active">
                                 <a href="transacciones.jsp">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Transacciones
@@ -228,7 +228,7 @@
                                                 </div>
                                                 <button class="btn-success" type="submit">
                                                     <i class="fa fa-save"></i>
-                                                    Enviar
+                                                    Realizar Transaccion
                                                 </button>
                                                 <div>
                                                     <%=(request.getAttribute("mensaje")!=null?request.getAttribute("mensaje"):"")%>

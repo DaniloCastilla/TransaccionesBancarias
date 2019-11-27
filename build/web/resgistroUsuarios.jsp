@@ -78,7 +78,7 @@
 
                         <ul class="submenu">
                             
-                            <li class="">
+                            <li class="active">
                                 <a href="resgistroUsuarios.jsp">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Registrar Usuario

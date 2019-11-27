@@ -1,29 +1,18 @@
 <%-- 
-    Document   : Transacciones Bancarias
-    Author     : Danilo Castilla
+    Document   : loginretiros
+    Created on : 26/11/2019, 09:49:46 AM
+    Author     : Laura Santacruz
 --%>
 
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="dao.Conexion"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="dao.CajeroDAO"%>
-<%@page import="modelo.Cajero"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="es">
+<html>
     <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta charset="utf-8" />
-        <title>Transacciones Bancarias</title>
-
-        <meta name="description" content="Christian Gámez Udemy" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Transacciones</title>
         <%@include file="css.jsp" %>
     </head>
-
     <body class="no-skin">
         <div id="navbar" class="navbar navbar-default          ace-save-state">
             <div class="navbar-container ace-save-state" id="navbar-container">
@@ -40,7 +29,7 @@
                 <div class="navbar-header pull-left">
                     <a href="index.jsp" class="navbar-brand">
                         <small>
-                            <%//<i class="fa fa-book"></i>%>
+                            <i class="fa fa-book"></i>
                             Transacciones Bancarias
                         </small>
                     </a>
@@ -66,7 +55,7 @@
                     }
                 </script>
 
-              
+                
 
                 <ul class="nav nav-list">
                     <li class="">
@@ -89,40 +78,9 @@
                         <b class="arrow"></b>
 
                         <ul class="submenu">
+                            
                             <li class="active">
-                                <a href="index.jsp">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Ver Usuarios
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="">
-                                <a href="resgistroUsuarios.jsp">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Registrar Usuarios
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="">
-                                <a href="transacciones.jsp">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Transacciones
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="">
-                                <a href="loginconsignaciones.jsp">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Consignaciones
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="">
-                                <a href="loginretiros.jsp">
+                                <a href="consignaciones.jsp">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Retiros
                                 </a>
@@ -141,60 +99,83 @@
 
             <div class="main-content">
                 <div class="main-content-inner">
+                   
+
                     <div class="page-content">
+                        <div class="ace-settings-container" id="ace-settings-container">
+                            <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                                <i class="ace-icon fa fa-cog bigger-130"></i>
+                            </div>
+
+                            <div class="ace-settings-box clearfix" id="ace-settings-box">
+                                <div class="pull-left width-50">
+                                    <div class="ace-settings-item">
+                                        <div class="pull-left">
+                                            <select id="skin-colorpicker" class="hide">
+                                                <option data-skin="no-skin" value="#438EB9">#438EB9</option>
+                                                <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                                <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                                <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                                            </select>
+                                        </div>
+                                        <span>&nbsp; Choose Skin</span>
+                                    </div>
+
+                                    <div class="ace-settings-item">
+                                        <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off" />
+                                        <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                                    </div>
+
+                                    <div class="ace-settings-item">
+                                        <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off" />
+                                        <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                                    </div>
+
+                                    <div class="ace-settings-item">
+                                        <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off" />
+                                        <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+                                    </div>
+
+                                    <div class="ace-settings-item">
+                                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off" />
+                                        <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+                                    </div>
+
+                                    <div class="ace-settings-item">
+                                        <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-add-container" autocomplete="off" />
+                                        <label class="lbl" for="ace-settings-add-container">
+                                            Inside
+                                            <b>.container</b>
+                                        </label>
+                                    </div>
+                                </div><!-- /.pull-left -->
+
+                                <div class="pull-left width-50">
+                                    <div class="ace-settings-item">
+                                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off" />
+                                        <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+                                    </div>
+
+                                    <div class="ace-settings-item">
+                                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off" />
+                                        <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+                                    </div>
+
+                                    <div class="ace-settings-item">
+                                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" autocomplete="off" />
+                                        <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+                                    </div>
+                                </div><!-- /.pull-left -->
+                            </div><!-- /.ace-settings-box -->
+                        </div><!-- /.ace-settings-container -->
+
                         <div class="page-header">
                             <h1>
-                                Sistemas Transaccionales  
+                                Sistemas Transaccionales
+                                
                             </h1>
                         </div><!-- /.page-header -->
-                            
-                        <div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="table-header">
-                                            Usuarios Registrados
-                                        </div>
-                                        <!-- div.table-responsive -->
-                                        <!-- div.dataTables_borderWrap -->
-                                        <%
-                                           Connection con = Conexion.conectar();
-                                           PreparedStatement ps;
-                                           ResultSet rs;
-                                           
-                                           ps=con.prepareStatement("SELECT * FROM cajeros");
-                                           rs=ps.executeQuery();
-                                           
-                                        %>
-                                        <div>
-                                            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th> Numero de la Cuenta </th>
-                                                        <th> Titular </th>
-                                                        <th> Clave </th>
-                                                        <th> Saldo </th>
-                                                    </tr>
-                                                    <%
-                                                        while(rs.next()){
-                                                    %>
-                                                    <tr>
-                                                        <td><%= rs.getInt("numero_cuenta")%></td> <!--numero_cuenta-->
-                                                        <td><%= rs.getString("titular")%></td><!--titular-->
-                                                        <td><%= rs.getShort("clave")%></td><!--clave-->
-                                                        <td><%= rs.getInt("saldo")%></td><!--saldo-->
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td> 
-                                                        </td>
-                                                        <td class="hidden-480"></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                </tbody>
-                                                <%}%>
-                        
-                        
+
                         <div class="row">
                             <div class="col-xs-12">
                                 <!-- PAGE CONTENT BEGINS -->
@@ -202,12 +183,55 @@
 
                                 <div class="row">
                                     <div class="col-xs-12">
+                                        <div class="table-header">
+                                            Retirar
+                                        </div>
+
                                         <!-- div.table-responsive -->
 
                                         <!-- div.dataTables_borderWrap -->
-                                            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
-                                            </table>
-                                        </div>
+                                        <div>
+                                            
+                                            <form name="formConsUsuario" action="autenticarRetiroControl" method="POST" class="form-horizontal">
+                                                
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label no-padding-right">
+                                                        Numero de Cuenta:
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="number" name="numero_cuenta" value="" placeholder="N° Cuenta" >
+                                                        
+                                                    </div>
+                                                </div>
+                                                                                              
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label no-padding-right">
+                                                        Clave:
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" minlength="4" maxlength="4" name="numero_clave" value="" placeholder="Clave">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label no-padding-right">
+                                                        Saldo a retirar:
+                                                    </label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" minlength="4" maxlength="7" name="numero_saldo" value="" placeholder="N° Cuenta" >
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                                <button  class="btn-success" type="submit">
+                                                    <i class="fa fa-save"></i>
+                                                    Retirar
+                                                </button>
+                                                <div>
+                                                    <%=(request.getAttribute("mensaje")!=null?request.getAttribute("mensaje"):"")%>
+                                                </div>
+                                            </form>
+                                            
+                                        </div> 
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
                             </div>
@@ -218,8 +242,6 @@
                 </div><!-- /.page-content -->
             </div>
         </div><!-- /.main-content -->
-
-        
 
         <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
             <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
@@ -504,4 +526,5 @@
         </script>
     </body>
 </html>
+
 

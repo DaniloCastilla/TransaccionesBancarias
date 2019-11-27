@@ -101,4 +101,81 @@ public class CajeroDAO {
             return null;
         }
     }
+    
+    public static boolean autenticar(Cajero caj){
+        
+        
+        int total = 0;
+        
+         Connection con = Conexion.conectar();
+        try {
+            CallableStatement cStmt = con.prepareCall("call autenticar(?,?)");
+            
+            cStmt.setInt(1, caj.getNumero_cuenta());
+            cStmt.setShort(2, caj.getClave());
+            
+            ResultSet resultado = cStmt.executeQuery();
+            
+           
+            while (resultado.next()) {                
+
+                caj.setNumero_cuenta(resultado.getInt("numero_cuenta"));
+                caj.setClave(resultado.getShort("clave"));
+                
+                total +=1;
+            }
+            
+            if (total != 0) {
+                return true;
+            }else{
+                return false;
+            }
+            
+        } catch (SQLException ex) {
+            //Logger.getLogger(CajeroDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    public static boolean consignacionUsuario(Cajero caj){
+        
+        Connection con = Conexion.conectar();
+        
+        try {
+            CallableStatement cStmt = con.prepareCall("call consignaciones(?,?)");
+            
+            cStmt.setInt(1, caj.getNumero_cuenta());
+            cStmt.setInt(2, caj.getSaldo());
+            
+            if (cStmt.executeUpdate()>0) {
+                return true;
+            }else{
+                return false;
+            }
+            
+        } catch (SQLException ex) {
+            //Logger.getLogger(CajeroDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    public static boolean retiros(Cajero caj){
+        
+        Connection con = Conexion.conectar();
+        
+        try {
+            CallableStatement cStmt = con.prepareCall("call retiros(?,?)");
+            
+            cStmt.setInt(1, caj.getNumero_cuenta());
+            cStmt.setInt(2, caj.getSaldo());
+            
+            if (cStmt.executeUpdate()>0) {
+                return true;
+            }else{
+                return false;
+            }
+            
+        } catch (SQLException ex) {
+            //Logger.getLogger(CajeroDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 }

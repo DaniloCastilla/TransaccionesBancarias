@@ -114,7 +114,7 @@
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="consignaciones.jsp">
+                                <a href="loginconsignaciones.jsp">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Consignaciones
                                 </a>
@@ -122,7 +122,7 @@
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="retiros.jsp">
+                                <a href="loginretiros.jsp">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Retiros
                                 </a>

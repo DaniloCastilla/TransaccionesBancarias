@@ -17,11 +17,11 @@ import modelo.Cajero;
 
 /**
  *
- * @author DaniloCastilla
+ * @author Sergio Cadena
  */
-@WebServlet(name = "transaccionControl", urlPatterns = {"/transaccionControl"})
 
-public class transaccionControl extends HttpServlet {
+@WebServlet(name = "autenticarConsigControl", urlPatterns = {"/autenticarConsigControl"})
+public class autenticarConsigControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +40,10 @@ public class transaccionControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet transaccionControl</title>");            
+            out.println("<title>Servlet autenticarConsigControl</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet transaccionControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet autenticarConsigControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -76,32 +76,34 @@ public class transaccionControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String numeroCuentaOrigen = request.getParameter("cuentaO");
-        String numeroClave = request.getParameter("numero_clave");    
-        String numeroCuentaDestino = request.getParameter("cuentaD");
+        String numeroCuenta = request.getParameter("numero_cuenta");
+        String numeroClave = request.getParameter("numero_clave");
         String numeroSaldo = request.getParameter("numero_saldo");
+        //String numeroClave = request.getParameter("numero_clave");
         
         Cajero caj1 = new Cajero();
         Cajero caj2 = new Cajero();
         
-        caj1.setNumero_cuenta(Integer.parseInt(numeroCuentaOrigen));
+        caj1.setNumero_cuenta(Integer.parseInt(numeroCuenta));
         caj1.setClave(Short.valueOf(numeroClave));
-        caj1.setDestinatario(Integer.parseInt(numeroCuentaDestino));
-        caj1.setSaldo(Integer.parseInt(numeroSaldo));
         
-        caj2.setNumero_cuenta(Integer.parseInt(numeroCuentaOrigen));
-        caj2.setClave(Short.valueOf(numeroClave));
+        caj2.setNumero_cuenta(Integer.parseInt(numeroCuenta));
+        caj2.setSaldo(Integer.parseInt(numeroSaldo));
         
-        if (CajeroDAO.autenticar(caj2) && CajeroDAO.transaccion(caj1)) {
-            request.setAttribute("mensaje", "La transaccion ha sido exitosa");
+        //processRequest(request, response
+        
+        if (CajeroDAO.autenticar(caj1) && CajeroDAO.consignacionUsuario(caj2)){
+            request.setAttribute("mensaje", "La consignacion ha sido exitosa");
+            //request.getRequestDispatcher("loginconsignaciones.jsp").forward(request, response);
         }else{
-            request.setAttribute("mensaje", "No se pudo realizar la transaccion. Acceso Denegado");
+            request.setAttribute("mensaje", " Acceso Denegado");
+            //request.getRequestDispatcher("loginconsignaciones.jsp").forward(request, response);
         }
+       
         
-        request.getRequestDispatcher("transacciones.jsp").forward(request, response);
-        
+        request.getRequestDispatcher("loginconsignaciones.jsp").forward(request, response);
+       
     }
-
     /**
      * Returns a short description of the servlet.
      *
@@ -111,5 +113,4 @@ public class transaccionControl extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
